@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Karan Jeevan | Electronics & Communication Engineer</title>
+  <title>Karan Jeevan | Embedded & IoT | ECE Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Portfolio of Karan Jeevan, Electronics and Communication Engineering student specializing in embedded systems, IoT, and robotics."
+    content="Portfolio of Karan Jeevan, final-year ECE student specializing in Embedded Systems, IoT, Robotics, and microcontroller programming."
   />
 
-  <!-- Icons -->
+  <!-- Font Awesome Icons (works on GitHub Pages) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,7 +19,7 @@
     :root {
       --bg: #020617;
       --bg-soft: #050816;
-      --card: rgba(15, 23, 42, 0.8);
+      --card: rgba(15, 23, 42, 0.9);
       --accent: #7c3aed;
       --accent2: #22d3ee;
       --text: #e5e7eb;
@@ -41,35 +41,60 @@
     }
 
     body {
-      font-family: system-ui, sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 43%, #000 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #111827 0, #020617 43%, #000 100%);
       color: var(--text);
       line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 1.25rem;
     }
 
-    /* Glass Card */
     .glass-card {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.5));
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.6)
+      );
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      backdrop-filter: blur(22px);
       box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(22px);
     }
 
-    /* Navbar */
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 40;
       backdrop-filter: blur(18px);
-      background: rgba(2, 6, 23, 0.96);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.8),
+        transparent
+      );
       border-bottom: 1px solid rgba(55, 65, 81, 0.5);
     }
 
@@ -77,90 +102,215 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
+      padding: 0.7rem 0;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
     }
 
     .nav-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: conic-gradient(from 160deg, #22d3ee, #6366f1, #ec4899, #22d3ee);
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 160deg,
+        #22d3ee,
+        #6366f1,
+        #ec4899,
+        #22d3ee
+      );
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      color: #fff;
+      font-size: 1rem;
+      color: #f9fafb;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9),
+        0 14px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .nav-title-main {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .nav-title-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .nav-link {
-      cursor: pointer;
-      color: var(--muted);
-      font-weight: 500;
       position: relative;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 500;
+      padding-bottom: 0.15rem;
+      transition: color var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: -0.18rem;
+      height: 2px;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--transition);
+      background: linear-gradient(to right, #a855f7, #22d3ee);
+    }
+
+    .nav-link:hover {
+      color: #e5e7eb;
     }
 
     .nav-link.active {
-      color: #fff;
+      color: #f9fafb;
     }
 
     .nav-link.active::after {
-      content: "";
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
+      position: relative;
+    }
+
+    .icon-btn i {
+      font-size: 0.9rem;
+    }
+
+    .icon-btn:hover {
+      border-color: #e5e7eb;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn:active {
+      transform: scale(0.94) translateY(0);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.8) inset;
+    }
+
+    .icon-tooltip {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -2px;
-      height: 2px;
-      background: linear-gradient(to right, #a855f7, #22d3ee);
+      bottom: -1.9rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .icon-btn:hover .icon-tooltip {
+      opacity: 1;
+      transform: translate(-50%, -3px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: linear-gradient(to right, #4f46e5, #ec4899);
+      border: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.75);
+      transition: transform var(--transition), box-shadow var(--transition),
+        opacity var(--transition);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    .nav-cta:active {
+      transform: scale(0.96);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.85) inset;
     }
 
     .nav-menu-toggle {
       display: none;
-      font-size: 1.4rem;
-      color: white;
       background: none;
       border: none;
+      color: var(--text);
+      font-size: 1.35rem;
+      cursor: pointer;
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        padding: 1rem;
-        background: black;
-      }
-      .nav-links.open {
-        display: block;
-      }
-      .nav-menu-toggle {
-        display: block;
-      }
-    }
-    /* Hero */
+    /* HERO */
     .hero {
-      padding: 3rem 0 2rem;
+      padding: 3.25rem 0 2.5rem;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.4fr);
+      gap: 2.5rem;
       align-items: center;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(74, 222, 128, 0.7);
+      font-size: 0.76rem;
+      color: #bbf7d0;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-kicker span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
     }
 
     .hero-title {
-      font-size: 2.6rem;
+      font-size: clamp(2.2rem, 4vw, 2.9rem);
       font-weight: 700;
+      letter-spacing: 0.02em;
       margin-bottom: 0.6rem;
     }
 
@@ -171,435 +321,449 @@
     }
 
     .hero-subtitle {
+      font-size: 0.96rem;
       color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 1rem;
+      max-width: 35rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.3rem;
+      font-size: 0.78rem;
     }
 
     .hero-pill {
-      padding: 6px 12px;
+      padding: 0.25rem 0.75rem;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--muted);
-      margin-right: 6px;
-      display: inline-block;
-      font-size: 0.85rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 120ms ease, box-shadow 120ms ease,
+        background 160ms ease, color 160ms ease, opacity 120ms ease;
     }
 
     .btn-primary {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(to right, #4f46e5, #ec4899);
-      color: white;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-right: 10px;
+      background: radial-gradient(circle at 10% 0, #22d3ee, #4f46e5 45%, #ec4899);
+      color: #f9fafb;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.97;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-primary:active,
+    .btn-ghost:active {
+      transform: scale(0.96);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.85) inset;
     }
 
     .btn-ghost {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
-      cursor: pointer;
-      font-weight: 600;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       color: var(--text);
     }
 
-    /* About */
-    section {
-      padding: 3rem 0;
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(243, 244, 246, 0.9);
     }
 
-    .section-title {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
       gap: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
     }
 
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
     }
 
-    .stat-card {
-      padding: 1rem;
-      border-radius: 12px;
+    .hero-meta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-meta-value {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    /* Hero Right Card */
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.6rem 1.4rem;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background:
+        radial-gradient(circle at 0 0, rgba(236, 72, 153, 0.22), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.18), transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(45, 212, 191, 0.16), transparent 55%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto auto;
+      gap: 1.1rem;
+      z-index: 1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.9rem;
+    }
+
+    .profile {
+      display: flex;
+      gap: 0.85rem;
+    }
+
+    .profile-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      background: radial-gradient(circle at 10% 0, #22d3ee, #6366f1 40%, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #f9fafb;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .profile-meta-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .profile-meta-role {
+      font-size: 0.8rem;
+      color: #d1d5f0;
+    }
+
+    .profile-meta-tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .availability-chip {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(74, 222, 128, 0.7);
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      align-self: flex-start;
+    }
+
+    .availability-chip span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.78rem;
+    }
+
+    .info-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
       border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.7rem 0.75rem;
+    }
+
+    .info-card-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .info-card-main {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-card-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+    }
+
+    .stack-pill {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.7rem;
       background: rgba(15, 23, 42, 0.9);
     }
 
-    .stat-value {
-      font-size: 1.4rem;
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .hero-card-socials {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .social-chip {
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background var(--transition), border-color var(--transition),
+        transform var(--transition), color var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+
+    .social-chip i {
+      font-size: 0.9rem;
+    }
+
+    .social-chip:hover {
+      border-color: rgba(248, 250, 252, 0.98);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+      color: #f9fafb;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.8);
+    }
+
+    .social-chip:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.9) inset;
+    }
+
+    .hero-card-tagline {
+      text-align: right;
+      font-size: 0.75rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.7rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
       font-weight: 600;
-      margin-bottom: 6px;
+    }
+
+    .section-description {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    /* About & Education */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-text p + p {
+      margin-top: 0.65rem;
+    }
+
+    .about-highlight {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      padding: 0.9rem;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-extra {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(148, 163, 184, 0.6);
+      padding-left: 1rem;
+      margin-top: 0.4rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.13rem;
+      top: 0.2rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22d3ee;
+    }
+
+    .timeline-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .timeline-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
     }
 
     /* Skills */
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     .skills-grid {
+      margin-top: 1.1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
     }
 
     .skill-card {
-      padding: 1rem;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.9);
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
       border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.92);
+      font-size: 0.8rem;
     }
 
     .skill-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 0.25rem;
     }
 
     .skill-level {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-  </style>
-</head>
-
-<body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="nav-brand">
-        <div class="nav-logo">KJ</div>
-        <div>
-          <strong>Karan Jeevan</strong><br />
-          <small style="color: var(--muted)">Electronics & Communication Engineer</small>
-        </div>
-      </div>
-
-      <button class="nav-menu-toggle" id="navToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <span class="nav-link active" data-target="home">Home</span>
-        <span class="nav-link" data-target="about">About</span>
-        <span class="nav-link" data-target="skills">Skills</span>
-        <span class="nav-link" data-target="projects">Projects</span>
-        <span class="nav-link" data-target="experience">Experience</span>
-        <span class="nav-link" data-target="contact">Contact</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section id="home" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1 class="hero-title">
-          Hi, I'm <span>Karan Jeevan</span>.
-        </h1>
-        <p class="hero-subtitle">
-          Electronics & Communication Engineering student with a strong interest in
-          embedded systems, IoT, and robotics.
-        </p>
-
-        <div>
-          <span class="hero-pill">Embedded Systems</span>
-          <span class="hero-pill">IoT & MQTT</span>
-          <span class="hero-pill">Robotics</span>
-          <span class="hero-pill">C / C++ / Python</span>
-        </div>
-
-        <br><br>
-
-        <button class="btn-primary" data-scroll="projects">View Projects</button>
-        <button class="btn-ghost" data-scroll="contact">Contact Me</button>
-      </div>
-
-      <div class="glass-card" style="padding: 1rem;">
-        <h3 style="margin-bottom: 10px;">Available for Internships</h3>
-        <p style="color: var(--muted); font-size: 0.9rem;">
-          Passionate about building intelligent embedded systems.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">A little about me</h2>
-      <p class="section-description">
-        I work at the intersection of hardware + software, building embedded systems and IoT projects.
-      </p>
-
-      <div class="about-grid">
-        <div>
-          <p style="color: var(--muted); margin-bottom: 1rem;">
-            I'm an <strong style="color:white">ECE Engineer</strong> focusing on Embedded Systems,
-            IoT, Robotics and real-time hardware development.
-          </p>
-          <p style="color: var(--muted); margin-bottom: 1rem;">
-            My projects include a <strong style="color:white">camouflage army robot</strong>,
-            smart home IoT systems and industrial safety automation.
-          </p>
-          <p style="color: var(--muted);">
-            I love learning new microcontrollers and sensors.
-          </p>
-        </div>
-
-        <div>
-          <div class="stat-card">
-            <div class="stat-value">8+</div>
-            <div>Hardware Projects</div>
-          </div>
-          <br>
-          <div class="stat-card">
-            <div class="stat-value">5+</div>
-            <div>Core Embedded Skills</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- SKILLS SECTION -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">What I work with</h2>
-      <p class="section-description">
-        A quick look at my core skills across embedded, IoT, and programming.
-      </p>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-title">Embedded & Microcontrollers</div>
-          <div class="skill-level">ESP32, Arduino, AVR</div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-title">Programming Languages</div>
-          <div class="skill-level">C, C++, Python</div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-title">IoT & Networking</div>
-          <div class="skill-level">MQTT, HTTP, Wi-Fi, Bluetooth</div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-title">Tools & Workflow</div>
-          <div class="skill-level">Git, VS Code, Arduino IDE, PCB basics</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Things I've built</h2>
-      <p class="section-description">
-        Each project is designed to solve a real-world problem using embedded + software skills.
-      </p>
-
-      <div class="skills-grid">
-
-        <!-- Project 1 -->
-        <div class="skill-card">
-          <div class="skill-title">Camouflage Army Robot</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            Semi-autonomous robot using ESP32 + sensors for surveillance and obstacle detection.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            ESP32 • Wireless Control • Camera
-          </p>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="skill-card">
-          <div class="skill-title">Smart Home Energy Monitor</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            Real-time power usage tracking with alerts & cloud dashboard.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            MQTT • Node-RED • Sensors
-          </p>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="skill-card">
-          <div class="skill-title">Industrial Safety Alert System</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            Gas & heat detection with buzzer + safety alarm notification.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            Arduino • GSM • Sensors
-          </p>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="skill-card">
-          <div class="skill-title">Remote Environment Rover</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            A rover that streams live sensor data + video, controllable via web UI.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            Raspberry Pi • Python • Camera
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Internships & Responsibilities</h2>
-      <p class="section-description">
-        A quick look at how I apply my embedded knowledge in real environments.
-      </p>
-
-      <div class="skills-grid">
-
-        <div class="skill-card">
-          <div class="skill-title">Embedded / IoT Intern</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            Worked with ESP32 + sensors for live monitoring systems.  
-            Implemented MQTT/HTTP communication & documented firmware.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            2024 • Bengaluru
-          </p>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-title">Mini Project Lead</div>
-          <p style="color: var(--muted); font-size: 0.88rem;">
-            Led a team of 3–4 to build an end-to-end embedded project from idea to final demo.
-          </p>
-          <p style="margin-top: 8px; font-size: 0.8rem; color: #fff;">
-            2023 • College Project
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Let's work together</h2>
-      <p class="section-description">
-        You can reach me via email, LinkedIn, GitHub, or send a message using this form.
-      </p>
-
-      <div class="about-grid">
-
-        <!-- Contact Info -->
-        <div>
-          <p style="margin-bottom: 1rem;">
-            <strong style="color:white;">Location:</strong><br>
-            Bengaluru, Karnataka, India
-          </p>
-
-          <p style="margin-bottom: 1rem;">
-            <strong style="color:white;">Email:</strong><br>
-            <a href="mailto:youremail@example.com" style="color:#22d3ee;">
-              youremail@example.com
-            </a>
-          </p>
-
-          <p style="margin-bottom: 1rem;">
-            <strong style="color:white;">LinkedIn:</strong><br>
-            <a href="https://linkedin.com/" target="_blank" style="color:#22d3ee;">
-              linkedin.com/your-profile
-            </a>
-          </p>
-
-          <p style="margin-bottom: 1rem;">
-            <strong style="color:white;">GitHub:</strong><br>
-            <a href="https://github.com/" target="_blank" style="color:#22d3ee;">
-              github.com/your-handle
-            </a>
-          </p>
-        </div>
-
-        <!-- Contact Form -->
-        <div>
-          <form
-            class="glass-card"
-            style="padding: 1rem;"
-            method="POST"
-            action="#"
-            onsubmit="alert('This is a demo form. Connect it to Formspree to receive messages.');"
-          >
-            <label style="color:white;">Name</label>
-            <input
-              style="width:100%; padding:8px; margin-bottom:10px; border-radius:8px; background:#0f172a; border:1px solid #4b5563; color:white;"
-              required
-            />
-
-            <label style="color:white;">Email</label>
-            <input
-              type="email"
-              style="width:100%; padding:8px; margin-bottom:10px; border-radius:8px; background:#0f172a; border:1px solid #4b5563; color:white;"
-              required
-            />
-
-            <label style="color:white;">Message</label>
-            <textarea
-              style="width:100%; padding:8px; height:100px; border-radius:8px; background:#0f172a; border:1px solid #4b5563; color:white;"
-              required
-            ></textarea>
-
-            <button class="btn-primary" type="submit" style="margin-top:10px;">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="padding: 1rem 0; text-align:center; color: var(--muted); border-top: 1px solid rgba(31,41,55,0.9);">
-    © <span id="year"></span> Karan Jeevan. Built with HTML, CSS & JavaScript.
-  </footer>
-
-  <!-- JAVASCRIPT -->
-  <script>
-    // Set current year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile Menu Toggle
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-    navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-    });
-
-    // Smooth Scrolling
-    document.querySelectorAll(".nav-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        const section = document.getElementById(link.dataset.target);
-        section.scrollIntoView({ behavior: "smooth" });
-        navLinks.classList.remove("open");
-      });
-    });
-
-    document.querySelector
+      font-size: 0.76rem;
+      color: var(--
